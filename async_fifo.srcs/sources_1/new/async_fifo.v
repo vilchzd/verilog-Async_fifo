@@ -21,6 +21,7 @@ module sync_fifo #(parameter depth=8, width=4)(
     output reg [width-1:0] read_data
     );
     
+    
 localparam address_width = $clog2(depth);
 
 reg [address_width-1:0] write_ptr;
