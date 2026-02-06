@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/dievi/Documents/Vivado_projects/async_fifo/async_fifo.sim/sim_1/impl/timing/xsim/sync_testbench_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module async_synchronizer
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/dievi/Documents/Vivado_projects/async_fifo/async_fifo.srcs/sim_1/new/sync_testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_testbench

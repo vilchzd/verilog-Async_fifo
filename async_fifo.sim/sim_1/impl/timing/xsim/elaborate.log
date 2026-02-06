@@ -1,0 +1,27 @@
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot sync_testbench_time_impl -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.sync_testbench xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-2861] module 'async_synchronizer' does not have a parameter named WIDTH [C:/Users/dievi/Documents/Vivado_projects/async_fifo/async_fifo.srcs/sim_1/new/sync_testbench.v:12]
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 8 for port 'data_in' [C:/Users/dievi/Documents/Vivado_projects/async_fifo/async_fifo.srcs/sim_1/new/sync_testbench.v:15]
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 8 for port 'data_out' [C:/Users/dievi/Documents/Vivado_projects/async_fifo/async_fifo.srcs/sim_1/new/sync_testbench.v:16]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "sync_testbench_time_impl.sdf", for root module "sync_testbench/uut".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "sync_testbench_time_impl.sdf", for root module "sync_testbench/uut".
+Time Resolution for simulation is 1ps
+Compiling module simprims_ver.BUFG
+Compiling module simprims_ver.IBUF
+Compiling module simprims_ver.OBUF
+Compiling module simprims_ver.FDRE_default
+Compiling module simprims_ver.x_lut1_mux2
+Compiling module simprims_ver.LUT1(INIT=2'b01)
+Compiling module xil_defaultlib.async_synchronizer
+Compiling module xil_defaultlib.sync_testbench
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot sync_testbench_time_impl
