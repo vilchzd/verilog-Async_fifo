@@ -1,29 +1,28 @@
-//`timescale 1ns / 1ps
+`timescale 1ns / 1ps
+`include "async_synchronizer.v"
+`include "async_memo.v"
 
-//module async_fifo #(parameter depth=8, width=4)(
-//    input wire wclk,
-//    input wire rclk,
-//    input wire wr_enable,
-//    input wire rd_enable, 
-//    input wire [width-1:0] write_data,
-//    input reg [width-1:0] read_data,
-//    );
-//endmodule
-
-//module sync_fifo #(parameter depth=8, width=4)(
-//    input wire reset,
-//    input wire clk, 
-//    input wire write_enable,
-//    input wire read_enable,
-//    input wire [width-1:0] write_data,
-//    output wire full,
-//    output wire empty, 
-//    output reg [width-1:0] read_data
-//    );
+module async_fifo #(parameter DATA_WIDTH = 8, ADDRESS_WIDTH = 4)(
+    input wire w_clk,
+    input wire r_clk,
+    input wire w_en, 
+    input wire r_en,
+    input wire w_rstn,
+    input wire r_rstn,
+    input wire [DATA_WIDTH-1:0] data_in,
+    input wire [ADDRESS_WIDTH-1:0] write_ptr,
+    input wire [ADDRESS_WIDTH-1:0] read_ptr,
     
     
-//localparam address_width = $clog2(depth);
+    output reg empty,
+    output reg full
+    );
+endmodule
 
-//reg [address_width-1:0] write_ptr;
-//reg [address_width-1:0] read_ptr;
-//reg [width-1:0] fifo_mem [0:depth-1];
+    
+    
+localparam address_width = $clog2(depth);
+
+reg [address_width-1:0] write_ptr;
+reg [address_width-1:0] read_ptr;
+reg [width-1:0] fifo_mem [0:depth-1];
