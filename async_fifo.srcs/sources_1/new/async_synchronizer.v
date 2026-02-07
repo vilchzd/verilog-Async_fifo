@@ -1,6 +1,6 @@
 `timescale 10ns / 1ns
 
-module async_synchronizer #(parameter WIDTH=8)(
+module async_synchronizer #(parameter WIDTH=4)(
     input wire clk,
     input wire reset_n,
     input wire [WIDTH-1:0] data_in,
