@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 10ns / 1ns
 `include "async_synchronizer.v"
 `include "async_memo.v"
 
@@ -10,19 +10,54 @@ module async_fifo #(parameter DATA_WIDTH = 8, ADDRESS_WIDTH = 4)(
     input wire w_rstn,
     input wire r_rstn,
     input wire [DATA_WIDTH-1:0] data_in,
-    input wire [ADDRESS_WIDTH-1:0] write_ptr,
-    input wire [ADDRESS_WIDTH-1:0] read_ptr,
+
     
-    
+    output wire [DATA_WIDTH-1:0] data_out,
     output reg empty,
     output reg full
     );
+    
+wire [ADDRESS_WIDTH-1:0] write_ptr;
+wire [ADDRESS_WIDTH-1:0] write_ptr_gray;
+wire [ADDRESS_WIDTH-1:0] read_ptr;
+wire [ADDRESS_WIDTH-1:0] read_ptr_gray;
+
+always @ (posedge w_clk) begin 
+    if (w_en && !full) begin
+        write_ptr <= 0;
+        
+    end
+end
+
+//always @ (posedge r_clk) begin 
+//        if (!r_rstn) begin
+//        read_ptr <= 0;
+//        end
+//end
+    
+    
+async_synchronizer #(ADDRESS_WIDTH) wptr_sync(
+    .clk(w_clk),
+    .reset_n(w_rstn),
+    .data_in(read_ptr_gray),
+    .data_out(write_ptr));
+
+async_synchronizer #(ADDRESS_WIDTH) rptr_sync(
+    .clk(r_clk),
+    .reset_n(r_rstn),
+    .data_in(write_ptr_gray),
+    .data_out(read_ptr));
+
+
+async_memo #(DATA_WIDTH, ADDRESS_WIDTH) memory(
+    .w_clk(w_clk),
+    .w_en(w_en),
+    .write_ptr(write_ptr), 
+    .r_clk(r_clk),
+    .r_en(r_en),
+    .read_ptr(read_ptr),
+    .data_in(data_in),
+    .data_out(data_out)
+    );
+
 endmodule
-
-    
-    
-localparam address_width = $clog2(depth);
-
-reg [address_width-1:0] write_ptr;
-reg [address_width-1:0] read_ptr;
-reg [width-1:0] fifo_mem [0:depth-1];
