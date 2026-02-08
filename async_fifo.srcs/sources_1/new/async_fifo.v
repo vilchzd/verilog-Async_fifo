@@ -12,22 +12,19 @@ module async_fifo #(parameter DATA_WIDTH = 8, ADDRESS_WIDTH = 4)(
     input wire [DATA_WIDTH-1:0] data_in,
 
     
-    output wire [DATA_WIDTH-1:0] data_out,
+    output reg [DATA_WIDTH-1:0] data_out,
     output reg empty,
     output reg full
     );
     
 wire [ADDRESS_WIDTH-1:0] write_ptr;
 wire [ADDRESS_WIDTH-1:0] write_ptr_gray;
+wire [ADDRESS_WIDTH-1:0] write_ptr_gsync;
 wire [ADDRESS_WIDTH-1:0] read_ptr;
 wire [ADDRESS_WIDTH-1:0] read_ptr_gray;
+wire [ADDRESS_WIDTH-1:0] read_ptr_gsync;
 
-always @ (posedge w_clk) begin 
-    if (w_en && !full) begin
-        write_ptr <= 0;
-        
-    end
-end
+
 
 //always @ (posedge r_clk) begin 
 //        if (!r_rstn) begin
